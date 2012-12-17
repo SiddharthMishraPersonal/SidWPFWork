@@ -17,7 +17,7 @@
                              Grid.Column="0" 
                              HorizontalAlignment="Stretch" 
                              VerticalAlignment="Top" 
-							 ItemsSource="{Binding Employees}"
+							 ItemsSource="{Binding CollegeVM.CollegeList}"                             
 							 Margin="0" 
                              GroupRenderMode="Flat"
 							 RowIndicatorVisibility="Collapsed"
@@ -26,7 +26,7 @@
 							 MaxHeight="500"
 							 AutoGenerateColumns="False"
 							 CanUserFreezeColumns="False"
-							 CanUserResizeColumns="False">
+							 CanUserResizeColumns="False" ShowGroupPanel="False">
             <telerik:RadGridView.Columns>
                 <telerik:GridViewToggleRowDetailsColumn />
                 <!--<telerik:GridViewImageColumn Header="Photo"
@@ -37,7 +37,7 @@
                 <telerik:GridViewDataColumn Header="Name"
 											DataMemberBinding="{Binding Name}" />
                 <telerik:GridViewDataColumn Header="Address"
-											DataMemberBinding="{Binding Address}" />                
+											DataMemberBinding="{Binding Address}" />
                 <telerik:GridViewDataColumn Header="City"
 											DataMemberBinding="{Binding City}" />
                 <telerik:GridViewDataColumn Header="State"
@@ -51,8 +51,13 @@
                     <telerik:GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <telerik:RadButton ClickMode="Press">
+                                <telerik:RadButton ClickMode="Press"
+                                                   Margin="2 2 1 2">
                                     <Image Source="{StaticResource EditImage16}"/>
+                                </telerik:RadButton>
+                                <telerik:RadButton ClickMode="Press"
+                                                   Margin="1 2 2 2">
+                                    <Image Source="{StaticResource DeleteImage16}"/>
                                 </telerik:RadButton>
                             </StackPanel>
                         </DataTemplate>
@@ -86,13 +91,13 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Text="Name: "
-										   Margin="5,10,0,0"
+										    Margin="5,0,0,0"
 										   Foreground="Black"
 										   FontWeight="Bold"
 										   Grid.Row="0"
 										   Grid.Column="0" />
                                 <TextBlock Text="{Binding Name}"
-										   Margin="5,10,0,0"
+										    Margin="5,0,0,0"
 										   Foreground="Black"
 										   Grid.Row="0"
 										   Grid.Column="2" />

@@ -6,6 +6,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/AutofacExample.EducationDepartment;component/ResourceDictionaries/CustomStyleDictionary.xaml"/>
+                <ResourceDictionary Source="/AutofacExample.EducationDepartment;component/ResourceDictionaries/BrushesImagesDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

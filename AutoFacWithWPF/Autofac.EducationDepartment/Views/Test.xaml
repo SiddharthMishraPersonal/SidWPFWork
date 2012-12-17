@@ -7,6 +7,113 @@
              mc:Ignorable="d" 
              >
     <Grid>
-        <telerik:RadGridView />
+
+        <Grid Width="Auto" HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="15" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Name: "
+										    Margin="5,0,0,0"
+										   Foreground="Black"
+										   FontWeight="Bold"
+										   Grid.Row="0"
+										   Grid.Column="0" />
+            <TextBlock Text="{Binding Name}"
+										    Margin="5,0,0,0"
+										   Foreground="Black"
+										   Grid.Row="0"
+										   Grid.Column="2" />
+            <TextBlock Text="College: "
+										    Margin="5,0,0,0"
+										   Foreground="Black"
+										   FontWeight="Bold"
+										   Grid.Row="1"
+										   Grid.Column="0" />
+            <TextBlock Text="{Binding College}"
+										    Margin="5,0,0,0"
+										   Foreground="Black"
+										   Grid.Row="1"
+										   Grid.Column="2" />
+            <TextBlock Text="Subject: "
+										    Margin="5,0,0,0"
+										   Foreground="Black"
+										   FontWeight="Bold"
+										   Grid.Row="2"
+										   Grid.Column="0" />
+            <TextBlock Text="{Binding Subject}"
+										    Margin="5,0,0,0"
+										   Foreground="Black"
+										   Grid.Row="2"
+										   Grid.Column="2" />
+            <TextBlock Text="Address: "
+										   Margin="5,0,0,0"
+										   Foreground="Black"
+										   FontWeight="Bold"
+										   Grid.Row="3"
+										   Grid.Column="0" />
+            <TextBlock Text="{Binding Address}"
+										   Foreground="Black"
+										   Margin="5,0,0,0"
+										   Grid.Row="3"
+										   Grid.Column="2" />
+            <TextBlock Text="City: "
+										   Margin="5,0,0,0"
+										   Foreground="Black"
+										   FontWeight="Bold"
+										   Grid.Row="4"
+										   Grid.Column="0" />
+            <TextBlock Text="{Binding City}"
+										   Foreground="Black"
+										   Margin="5,0,0,0"
+										   Grid.Row="4"
+										   Grid.Column="2" />
+            <TextBlock Text="State: "
+										   Foreground="Black"
+										   Margin="5,0,0,0"
+										   FontWeight="Bold"
+										   Grid.Row="5"
+										   Grid.Column="0" />
+            <TextBlock Text="{Binding State}"
+										   Foreground="Black"
+										   Margin="5,0,0,0"
+										   Grid.Row="5"
+										   Grid.Column="2" />
+            <TextBlock Text="Country: "
+										   Margin="5,0,0,0"
+										   Foreground="Black"
+										   FontWeight="Bold"
+										   Grid.Row="6"
+										   Grid.Column="0" />
+            <TextBlock Text="{Binding Country}"
+										   Margin="5,0,0,0"
+										   Foreground="Black"
+										   Grid.Row="6"
+										   Grid.Column="2" />
+            <TextBlock Text="Phone: "
+										   Margin="5,0,0,0"
+										   Foreground="Black"
+										   FontWeight="Bold"
+										   Grid.Row="7"
+										   Grid.Column="0" />
+            <TextBlock Text="{Binding ContactNumber}"
+										   Foreground="Black"
+										   Margin="5,0,0,0"
+										   Grid.Row="7"
+										   Grid.Column="2" />
+        </Grid>
+
     </Grid>
 </UserControl>

@@ -16,9 +16,10 @@ namespace AutofacExample.EducationDepartment.ViewModels
     {
         #region Private Member Variable
 
-        string _name;
         Window _currentView;
         private readonly IEventAggregator _eventAggregator;
+        private CollegeViewModel _collegeVM;
+        private StudentViewModel _studentVM;
 
         #endregion
 
@@ -37,26 +38,26 @@ namespace AutofacExample.EducationDepartment.ViewModels
             }
         }
 
-        public string Name
+        public StudentViewModel StudentVM
         {
-            get { return _name; }
-            set
-            {
-                if (value != _name)
-                {
-                    _name = value;
-                    OnPropertyChanged(() => this.Name);
-                }
-            }
+            get { return _studentVM; }
+        }
+
+        public CollegeViewModel CollegeVM
+        {
+            get { return _collegeVM; }
         }
 
         #endregion
 
-        public ApplicationViewModel(MainWindow mainWindow, IEventAggregator eventAggregator)
+        public ApplicationViewModel(MainWindow mainWindow, IEventAggregator eventAggregator,
+            CollegeViewModel collegeVM, StudentViewModel studentVM)
         {
             this.CurrentView = mainWindow;
             this.CurrentView.DataContext = this;
             this._eventAggregator = eventAggregator;
+            this._collegeVM = collegeVM;
+            this._studentVM = studentVM;
 
             this.CurrentView.Show();
         }

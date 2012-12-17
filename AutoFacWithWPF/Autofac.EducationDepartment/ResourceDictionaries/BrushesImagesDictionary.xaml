@@ -1,4 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ImageSource x:Key="EditImage16">/AutofacExample.EducationDepartment;component/Images/Edit16.png</ImageSource>
+    <ImageSource x:Key="DeleteImage16">/AutofacExample.EducationDepartment;component/Images/Delete16.png</ImageSource>
 </ResourceDictionary>
