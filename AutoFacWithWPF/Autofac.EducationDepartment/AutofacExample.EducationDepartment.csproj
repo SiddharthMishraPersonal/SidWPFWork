@@ -51,13 +51,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac">
+    <Reference Include="Autofac, Version=2.6.3.862, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>Autofac\Binaries\Autofac\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac.Configuration">
+    <Reference Include="Autofac.Configuration, Version=2.6.3.862, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>Autofac\Binaries\Autofac\Autofac.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac.Integration.Mef">
+    <Reference Include="Autofac.Integration.Mef, Version=2.6.3.862, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>Autofac\Binaries\Autofac\Autofac.Integration.Mef.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -179,14 +182,12 @@
     <Content Include="Autofac\Binaries\ReactiveExtensions\System.Reactive.dll" />
     <Content Include="Autofac\Binaries\ReactiveExtensions\System.Reactive.Windows.Threading.dll" />
     <Content Include="Autofac\Binaries\Telerik\Telerik.Windows.Controls.dll" />
-    <Resource Include="Autofac\Binaries\Autofac\Autofac License.txt" />
     <Content Include="Autofac\Binaries\Autofac\Autofac.Configuration.dll" />
     <Content Include="Autofac\Binaries\Autofac\Autofac.dll" />
     <Content Include="Autofac\Binaries\Autofac\Autofac.Integration.Mef.dll" />
     <Content Include="Autofac\Binaries\Autofac\Autofac.Integration.Mvc.dll" />
     <Content Include="Autofac\Binaries\Autofac\Autofac.Integration.Wcf.dll" />
     <Content Include="Autofac\Binaries\Autofac\Autofac.Integration.Web.dll" />
-    <Resource Include="Autofac\Binaries\Autofac\Autofac.XML" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
