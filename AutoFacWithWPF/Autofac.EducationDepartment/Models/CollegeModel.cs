@@ -61,7 +61,6 @@ namespace AutofacExample.EducationDepartment.Models
             }
         }
 
-
         public string City
         {
             get { return _city; }
@@ -116,5 +115,13 @@ namespace AutofacExample.EducationDepartment.Models
 
         #endregion
 
+        #region Constructors
+
+        public CollegeModel()
+        {
+            this.CollegeID = Guid.NewGuid().ToString();
+        }
+
+        #endregion
     }
 }

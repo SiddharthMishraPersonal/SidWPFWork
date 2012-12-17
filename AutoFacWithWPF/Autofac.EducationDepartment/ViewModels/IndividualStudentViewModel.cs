@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using AutofacExample.EducationDepartment.Shared;
+using Telerik.Windows.Controls;
+using AutofacExample.EducationDepartment.EventBase;
+using AutofacExample.EducationDepartment.Models;
+using System.Collections.ObjectModel;
 
-namespace AutofacExample.EducationDepartment.Models
+namespace AutofacExample.EducationDepartment.ViewModels
 {
-    public class StudentModel : NotifyPropertyChanged
+    public class IndividualStudentViewModel : ViewModelBase
     {
         #region Private Variables
 
@@ -20,9 +23,18 @@ namespace AutofacExample.EducationDepartment.Models
         private string _country;
         private string _contactNumber;
 
+        private StudentViewModel _studentVM;
+        private CollegeViewModel _collegeVM;
+        private readonly IEventAggregator _eventAggregator;
+
         #endregion
 
         #region Properties
+
+        public CollegeViewModel CollegeVM
+        {
+            get { return _collegeVM; }
+        }
 
         public string ContactNumber
         {
@@ -145,10 +157,12 @@ namespace AutofacExample.EducationDepartment.Models
 
         #region Constructors
 
-        public StudentModel(string collegeID)
+        public IndividualStudentViewModel(StudentViewModel studentVM, CollegeViewModel collegeVM,
+            IEventAggregator eventAggregator)
         {
-            this.CollegeID = Guid.NewGuid().ToString();
-            this.CollegeID = collegeID;
+            this._studentVM = studentVM;
+            this._collegeVM = collegeVM;
+            this._eventAggregator = eventAggregator;
         }
 
         #endregion

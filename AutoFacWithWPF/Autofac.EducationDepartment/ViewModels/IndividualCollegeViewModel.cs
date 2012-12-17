@@ -2,23 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using AutofacExample.EducationDepartment.Shared;
+using Telerik.Windows.Controls;
+using AutofacExample.EducationDepartment.EventBase;
 
-namespace AutofacExample.EducationDepartment.Models
+namespace AutofacExample.EducationDepartment.ViewModels
 {
-    public class StudentModel : NotifyPropertyChanged
+    public class IndividualCollegeViewModel : ViewModelBase
     {
-        #region Private Variables
+        #region Private Variable
 
-        private string _name;
         private string _collegeID;
-        private string _studentID;
-        private string _subject;
+        private string _name;
         private string _address;
         private string _city;
         private string _state;
         private string _country;
         private string _contactNumber;
+
+        private CollegeViewModel _collegeVM;
+        private readonly IEventAggregator _eventAggregator;
 
         #endregion
 
@@ -89,28 +91,15 @@ namespace AutofacExample.EducationDepartment.Models
             }
         }
 
-        public string Subject
+        public string Name
         {
-            get { return _subject; }
+            get { return _name; }
             set
             {
-                if (value != _subject)
+                if (value != _country)
                 {
-                    _subject = value;
-                    OnPropertyChanged(() => this.Subject);
-                }
-            }
-        }
-
-        public string StudentID
-        {
-            get { return _studentID; }
-            set
-            {
-                if (value != _studentID)
-                {
-                    _studentID = value;
-                    OnPropertyChanged(() => this.StudentID);
+                    _name = value;
+                    OnPropertyChanged(() => this.Name);
                 }
             }
         }
@@ -128,27 +117,13 @@ namespace AutofacExample.EducationDepartment.Models
             }
         }
 
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                if (value != _country)
-                {
-                    _name = value;
-                    OnPropertyChanged(() => this.Name);
-                }
-            }
-        }
-
         #endregion
 
         #region Constructors
 
-        public StudentModel(string collegeID)
+        public IndividualCollegeViewModel(CollegeViewModel collegeVM, IEventAggregator eventAggregator)
         {
-            this.CollegeID = Guid.NewGuid().ToString();
-            this.CollegeID = collegeID;
+
         }
 
         #endregion

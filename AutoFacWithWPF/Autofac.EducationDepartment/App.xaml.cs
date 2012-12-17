@@ -5,9 +5,9 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 using System.Text;
-using AutofacExample.EducationDepartment.Autofac;
 using AutofacExample.EducationDepartment.ViewModels;
 using Autofac;
+using AutofacExample.EducationDepartment.Registration;
 
 namespace AutofacExample.EducationDepartment
 {

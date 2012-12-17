@@ -4,6 +4,11 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="162*" />
             <ColumnDefinition Width="341*" />
         </Grid.ColumnDefinitions>
@@ -52,7 +57,7 @@
                 Margin="5"
                 Grid.Column="1"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Center"/>
+                VerticalAlignment="Center"/>-->
 
     </Grid>
 </Window>
