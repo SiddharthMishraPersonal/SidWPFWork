@@ -123,7 +123,8 @@ namespace AutofacExample.EducationDepartment.ViewModels
 
         public IndividualCollegeViewModel(CollegeViewModel collegeVM, IEventAggregator eventAggregator)
         {
-
+            this._collegeVM = collegeVM;
+            this._eventAggregator = eventAggregator;
         }
 
         #endregion
