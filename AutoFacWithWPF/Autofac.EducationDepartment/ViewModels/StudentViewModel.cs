@@ -17,15 +17,51 @@ namespace AutofacExample.EducationDepartment.ViewModels
         #region Private
 
         private readonly IEventAggregator _eventAggregator;
+        private string _selectedCollegeID = Guid.NewGuid().ToString();
         private ObservableCollection<StudentModel> _studentList = new ObservableCollection<StudentModel>();
+        private ObservableCollection<StudentModel> _studentListPerCollege = new ObservableCollection<StudentModel>();
+
+        public ObservableCollection<StudentModel> StudentListPerCollege
+        {
+            get
+            {
+                _studentListPerCollege.Clear();
+                var ss = _studentList.Where(s => s.CollegeID == this.SelectedCollegeID).ToList();
+                if (ss == null)
+                {
+                    return null;
+                }
+
+                foreach (var item in ss)
+                {
+                    this._studentListPerCollege.Add(item);
+                }
+
+                return _studentListPerCollege;
+            }
+        }
 
         #endregion
 
         #region Properties
 
+        public string SelectedCollegeID
+        {
+            get { return _selectedCollegeID; }
+            set
+            {
+                _selectedCollegeID = value;
+                OnPropertyChanged(() => SelectedCollegeID);
+                OnPropertyChanged(() => StudentListPerCollege);
+            }
+        }
+
         public ObservableCollection<StudentModel> StudentList
         {
-            get { return _studentList; }
+            get
+            {
+                return _studentList;
+            }
         }
 
         #endregion

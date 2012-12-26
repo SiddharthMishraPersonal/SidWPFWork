@@ -19,6 +19,7 @@ namespace AutofacExample.EducationDepartment.Models
         private string _state;
         private string _country;
         private string _contactNumber;
+        private string _college;
 
         #endregion
 
@@ -111,6 +112,19 @@ namespace AutofacExample.EducationDepartment.Models
                 {
                     _studentID = value;
                     OnPropertyChanged(() => this.StudentID);
+                }
+            }
+        }
+
+        public string College
+        {
+            get { return _college; }
+            set
+            {
+                if (value != null)
+                {
+                    _college = value;
+                    OnPropertyChanged(() => this.College);
                 }
             }
         }
