@@ -121,20 +121,18 @@
     <Compile Include="Models\CollegeModel.cs" />
     <Compile Include="Models\StudentModel.cs" />
     <Compile Include="Shared\NotifyPropertyChanged.cs" />
+    <Compile Include="Shared\RelayCommands.cs" />
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
     <Compile Include="ViewModels\CollegeViewModel.cs" />
     <Compile Include="ViewModels\IndividualCollegeViewModel.cs" />
     <Compile Include="ViewModels\IndividualStudentViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />
     <Compile Include="ViewModels\PageViewModel.cs" />
-    <Compile Include="Views\Test.xaml.cs">
-      <DependentUpon>Test.xaml</DependentUpon>
+    <Compile Include="Views\AddCollege.xaml.cs">
+      <DependentUpon>AddCollege.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ucAddCollege.xaml.cs">
-      <DependentUpon>ucAddCollege.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ucAddStudent.xaml.cs">
-      <DependentUpon>ucAddStudent.xaml</DependentUpon>
+    <Compile Include="Views\AddStudent.xaml.cs">
+      <DependentUpon>AddStudent.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ucCollegeDetails.xaml.cs">
       <DependentUpon>ucCollegeDetails.xaml</DependentUpon>
@@ -163,15 +161,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Test.xaml">
+    <Page Include="Views\AddCollege.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ucAddCollege.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ucAddStudent.xaml">
+    <Page Include="Views\AddStudent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

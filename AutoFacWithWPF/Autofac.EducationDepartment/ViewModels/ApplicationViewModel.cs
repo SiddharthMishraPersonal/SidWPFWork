@@ -11,6 +11,9 @@ using System.Collections.ObjectModel;
 using AutofacExample.EducationDepartment.Events;
 using System.Windows.Controls;
 using Telerik.Windows.Controls.GridView;
+using System.Windows.Input;
+using AutofacExample.EducationDepartment.Shared;
+using AutofacExample.EducationDepartment.Views;
 
 namespace AutofacExample.EducationDepartment.ViewModels
 {
@@ -23,6 +26,9 @@ namespace AutofacExample.EducationDepartment.ViewModels
         private CollegeViewModel _collegeVM;
         private StudentViewModel _studentVM;
         private ObservableCollection<StudentModel> _studentRepository = new ObservableCollection<StudentModel>();
+
+        private Func<IndividualCollegeViewModel> _individualCollegeVMFactory;
+        private Func<IndividualStudentViewModel> _individualStudentVMFactory;
 
         private CollegeModel _selectedCollege;
         private StudentModel _selectedStudent;
@@ -85,13 +91,16 @@ namespace AutofacExample.EducationDepartment.ViewModels
         #endregion
 
         public ApplicationViewModel(MainWindow mainWindow, IEventAggregator eventAggregator,
-            CollegeViewModel collegeVM, StudentViewModel studentVM)
+            CollegeViewModel collegeVM, StudentViewModel studentVM,
+           Func<IndividualCollegeViewModel> individualCollegeVM, Func<IndividualStudentViewModel> individualStudentVM)
         {
             this.CurrentView = mainWindow;
             this.CurrentView.DataContext = this;
             this._eventAggregator = eventAggregator;
             this._collegeVM = collegeVM;
             this._studentVM = studentVM;
+            this._individualCollegeVMFactory = individualCollegeVM;
+            this._individualStudentVMFactory = individualStudentVM;
 
             AddColleges();
             AddStudentsToColleges();
@@ -266,6 +275,70 @@ namespace AutofacExample.EducationDepartment.ViewModels
                 this._studentVM.StudentList.Add(student);
             }
 
+        }
+
+        #endregion
+
+        #region College Commands
+
+        ICommand _createNewCollegeCommand;
+
+        public ICommand CreateNewCollegeCommand
+        {
+            get
+            {
+                if (_createNewCollegeCommand == null)
+                {
+                    _createNewCollegeCommand = new RelayCommands(param => this.CreateNewCollegeCommand_Execute(param),
+                    param => this.CreateNewCollegeCommand_CanExecute(param));
+                }
+                return _createNewCollegeCommand;
+            }
+        }
+
+        bool CreateNewCollegeCommand_CanExecute(object param)
+        {
+            return true;
+        }
+
+        void CreateNewCollegeCommand_Execute(object param)
+        {
+            IndividualCollegeViewModel indCollegeVM = this._individualCollegeVMFactory();
+            (indCollegeVM.View as AddCollege).Owner = this.CurrentView;
+            (indCollegeVM.View as AddCollege).ShowDialog();
+        }
+
+        #endregion
+
+        #region Student Commands
+
+        ICommand _createStudentCommand;
+
+        public ICommand CreateStudentCommand
+        {
+            get
+            {
+                if (_createStudentCommand == null)
+                {
+                    _createStudentCommand = new RelayCommands(param => this.CreateStudentCommand_Execute(param),
+                        param => this.CreateStudentCommand_CanExecute(param));
+                }
+                return _createStudentCommand;
+            }
+        }
+
+        bool CreateStudentCommand_CanExecute(object param)
+        {
+            if (this.SelectedCollege == null)
+                return false;
+            return true;
+        }
+
+        void CreateStudentCommand_Execute(object param)
+        {
+            IndividualStudentViewModel indStudentVM = this._individualStudentVMFactory();
+            (indStudentVM.View as AddStudent).Owner = this.CurrentView;
+            (indStudentVM.View as AddStudent).ShowDialog();
         }
 
         #endregion

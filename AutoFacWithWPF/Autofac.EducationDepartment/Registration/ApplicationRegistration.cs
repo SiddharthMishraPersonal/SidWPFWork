@@ -25,6 +25,14 @@ namespace AutofacExample.EducationDepartment.Registration
                 .AsSelf()
                 .SingleInstance();
 
+            builder.RegisterType<AddCollege>()
+                .AsSelf()
+               .SingleInstance();
+
+            builder.RegisterType<AddStudent>()
+                .AsSelf()
+               .SingleInstance();
+
             builder.RegisterType<ucCollegeDetails>()
                 .AsSelf()
                 .SingleInstance();
@@ -41,17 +49,19 @@ namespace AutofacExample.EducationDepartment.Registration
                 .AsSelf()
                 .SingleInstance();
 
+            //Each time new instance will be created for College
             builder.RegisterType<IndividualCollegeViewModel>()
                 .AsSelf()
-                .SingleInstance();
+                .InstancePerDependency();
 
             builder.RegisterType<StudentViewModel>()
                 .AsSelf()
                 .SingleInstance();
 
+            //Each time new instance will be created for Student
             builder.RegisterType<IndividualStudentViewModel>()
                 .AsSelf()
-                .SingleInstance();
+                .InstancePerDependency();
 
         }
 

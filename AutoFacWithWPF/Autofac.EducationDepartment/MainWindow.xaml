@@ -5,21 +5,36 @@
         Title="MainWindow"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <!--<ScrollViewer HorizontalScrollBarVisibility="Visible" 
-                          VerticalScrollBarVisibility="Auto"
-                          Grid.Column="0">-->
-            <my:ucCollegeDetails Grid.Column="0"/>
-        <!--</ScrollViewer>-->
-        <!--<ScrollViewer HorizontalScrollBarVisibility="Visible" 
-                          VerticalScrollBarVisibility="Auto"
-                          Grid.Column="1">-->
-            <my:ucStudentDetails x:Name="ucStudentDetails" Grid.Column="1"/>
-        <!--</ScrollViewer>-->
-
+        <telerik:RadMenu Grid.ColumnSpan="3" Grid.Row="0" 
+                         HorizontalAlignment="Stretch"
+                         Name="radMenu1" VerticalAlignment="Top" >
+            <telerik:RadMenuItem Header="College">
+                <telerik:RadMenuItem Header="Add" Command="{Binding CreateNewCollegeCommand}"/>
+            </telerik:RadMenuItem>
+            <telerik:RadMenuItem Header="Student">
+                <telerik:RadMenuItem Header="Add" Command="{Binding CreateStudentCommand}"/>
+            </telerik:RadMenuItem>
+        </telerik:RadMenu>
+        <Border BorderBrush="Black"
+                BorderThickness="1" Grid.Row="1" Grid.Column="0">
+            <my:ucCollegeDetails />
+        </Border>
+        <Border BorderBrush="Black" 
+                BorderThickness="1" 
+                Grid.Row="1"
+                Grid.Column="2">
+            <my:ucStudentDetails x:Name="ucStudentDetails" />
+        </Border>
+        
     </Grid>
 </Window>

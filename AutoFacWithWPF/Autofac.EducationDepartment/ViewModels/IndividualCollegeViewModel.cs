@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using Telerik.Windows.Controls;
 using AutofacExample.EducationDepartment.EventBase;
+using AutofacExample.EducationDepartment.Views;
 
 namespace AutofacExample.EducationDepartment.ViewModels
 {
-    public class IndividualCollegeViewModel : ViewModelBase
+    public class IndividualCollegeViewModel : PageViewModel<AddCollege>
     {
         #region Private Variable
 
@@ -121,7 +122,8 @@ namespace AutofacExample.EducationDepartment.ViewModels
 
         #region Constructors
 
-        public IndividualCollegeViewModel(CollegeViewModel collegeVM, IEventAggregator eventAggregator)
+        public IndividualCollegeViewModel(AddCollege addCollege, CollegeViewModel collegeVM, IEventAggregator eventAggregator)
+            : base(addCollege)
         {
             this._collegeVM = collegeVM;
             this._eventAggregator = eventAggregator;
