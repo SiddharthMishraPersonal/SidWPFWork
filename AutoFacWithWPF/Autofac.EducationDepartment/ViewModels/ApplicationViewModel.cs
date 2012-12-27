@@ -23,6 +23,7 @@ namespace AutofacExample.EducationDepartment.ViewModels
 
         Window _currentView;
         private readonly IEventAggregator _eventAggregator;
+        private readonly ISettingsService _settingsService;
         private CollegeViewModel _collegeVM;
         private StudentViewModel _studentVM;
         private ObservableCollection<StudentModel> _studentRepository = new ObservableCollection<StudentModel>();
@@ -32,7 +33,7 @@ namespace AutofacExample.EducationDepartment.ViewModels
 
         private CollegeModel _selectedCollege;
         private StudentModel _selectedStudent;
-        private RadGridView _studentGridView;
+        private RadGridView _studentGridView;        
 
         #endregion
 
@@ -90,13 +91,14 @@ namespace AutofacExample.EducationDepartment.ViewModels
 
         #endregion
 
-        public ApplicationViewModel(MainWindow mainWindow, IEventAggregator eventAggregator,
+        public ApplicationViewModel(MainWindow mainWindow, IEventAggregator eventAggregator, ISettingsService settingsService,
             CollegeViewModel collegeVM, StudentViewModel studentVM,
            Func<IndividualCollegeViewModel> individualCollegeVM, Func<IndividualStudentViewModel> individualStudentVM)
         {
             this.CurrentView = mainWindow;
             this.CurrentView.DataContext = this;
             this._eventAggregator = eventAggregator;
+            this._settingsService = settingsService;
             this._collegeVM = collegeVM;
             this._studentVM = studentVM;
             this._individualCollegeVMFactory = individualCollegeVM;

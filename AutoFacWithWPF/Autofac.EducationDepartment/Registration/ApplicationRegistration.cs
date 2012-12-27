@@ -6,6 +6,7 @@ using Autofac;
 using AutofacExample.EducationDepartment.ViewModels;
 using AutofacExample.EducationDepartment.Views;
 using AutofacExample.EducationDepartment.EventBase;
+using AutofacExample.EducationDepartment.Shared;
 
 
 namespace AutofacExample.EducationDepartment.Registration
@@ -19,6 +20,11 @@ namespace AutofacExample.EducationDepartment.Registration
             builder.RegisterType<EventAggregator>()
                 .AsSelf()
                 .As<IEventAggregator>()
+                .SingleInstance();
+
+            builder.RegisterType<XmlSettingsService>()
+                .AsSelf()
+                .As<ISettingsService>()
                 .SingleInstance();
 
             builder.RegisterType<MainWindow>()

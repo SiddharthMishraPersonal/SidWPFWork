@@ -8,6 +8,7 @@ using System.Text;
 using AutofacExample.EducationDepartment.ViewModels;
 using Autofac;
 using AutofacExample.EducationDepartment.Registration;
+using AutofacExample.EducationDepartment.Shared;
 
 namespace AutofacExample.EducationDepartment
 {
@@ -16,6 +17,8 @@ namespace AutofacExample.EducationDepartment
     /// </summary>
     public partial class App : Application
     {
+        private ISettingsService _settingsService;
+
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -26,12 +29,34 @@ namespace AutofacExample.EducationDepartment
              * Below code will Register the application
              * 
              */
-
             var builder = new ContainerBuilder();
             builder.RegisterModule<ApplicationRegistration>();
 
             var container = builder.Build();
             var app = container.Resolve<ApplicationViewModel>();
+
+            /*
+             * SettingsService : Loading last saved settings.
+             */
+            string settings = AutofacExample.EducationDepartment.Properties.Settings.Default.UISetting;
+            _settingsService = container.Resolve<ISettingsService>();
+
+            if (!string.IsNullOrEmpty(settings))
+            {
+                _settingsService.SetState(settings);
+            }
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+
+            /*
+             * Saving current application settings before exiting application.
+             * 
+             */
+            AutofacExample.EducationDepartment.Properties.Settings.Default.UISetting = _settingsService.GetState();
+            AutofacExample.EducationDepartment.Properties.Settings.Default.Save();
         }
 
         void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)

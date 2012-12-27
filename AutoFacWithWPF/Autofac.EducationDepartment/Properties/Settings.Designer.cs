@@ -22,5 +22,17 @@ namespace AutofacExample.EducationDepartment.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string UISetting {
+            get {
+                return ((string)(this["UISetting"]));
+            }
+            set {
+                this["UISetting"] = value;
+            }
+        }
     }
 }
