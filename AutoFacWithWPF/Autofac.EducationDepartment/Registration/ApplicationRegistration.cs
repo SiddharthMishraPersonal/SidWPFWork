@@ -25,13 +25,15 @@ namespace AutofacExample.EducationDepartment.Registration
                 .AsSelf()
                 .SingleInstance();
 
+            //Each time new instance will be created for College
             builder.RegisterType<AddCollege>()
                 .AsSelf()
-               .SingleInstance();
+               .InstancePerDependency();
 
+            //Each time new instance will be created for Student
             builder.RegisterType<AddStudent>()
                 .AsSelf()
-               .SingleInstance();
+               .InstancePerDependency();
 
             builder.RegisterType<ucCollegeDetails>()
                 .AsSelf()

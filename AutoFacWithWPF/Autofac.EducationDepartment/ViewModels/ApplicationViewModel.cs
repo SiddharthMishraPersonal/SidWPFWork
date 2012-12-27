@@ -283,6 +283,9 @@ namespace AutofacExample.EducationDepartment.ViewModels
 
         ICommand _createNewCollegeCommand;
 
+        /// <summary>
+        /// Command to create new College.
+        /// </summary>
         public ICommand CreateNewCollegeCommand
         {
             get
@@ -314,6 +317,9 @@ namespace AutofacExample.EducationDepartment.ViewModels
 
         ICommand _createStudentCommand;
 
+        /// <summary>
+        /// Command to create new Student for a college.
+        /// </summary>
         public ICommand CreateStudentCommand
         {
             get
