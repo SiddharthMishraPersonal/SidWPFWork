@@ -40,7 +40,7 @@ namespace AutofacExample.EducationDepartment.ViewModels
                 .ObserveOnDispatcher()
                 .Subscribe(e =>
                 {
-                    if (null != e.College)
+                    if (null == e.College)
                         return;
 
                     this.CollegeList.Add(e.College);

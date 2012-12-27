@@ -8,6 +8,7 @@ using AutofacExample.EducationDepartment.Views;
 using System.Windows.Input;
 using AutofacExample.EducationDepartment.Models;
 using AutofacExample.EducationDepartment.Shared;
+using AutofacExample.EducationDepartment.Events;
 
 namespace AutofacExample.EducationDepartment.ViewModels
 {
@@ -177,8 +178,11 @@ namespace AutofacExample.EducationDepartment.ViewModels
             college.Country = this.Country;
             college.ContactNumber = this.ContactNumber;
 
-            //Add college to list
-            this._collegeVM.CollegeList.Add(college);
+            ////Add college to list
+            //this._collegeVM.CollegeList.Add(college);
+
+            //Add college to list using Event machenism
+            this._eventAggregator.Publish(new CollegeAddedEvent(college, this));
 
             //Close after saving
             (this.View as AddCollege).Close();

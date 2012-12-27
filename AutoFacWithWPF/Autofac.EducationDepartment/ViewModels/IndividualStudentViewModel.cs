@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using AutofacExample.EducationDepartment.Views;
 using System.Windows.Input;
 using AutofacExample.EducationDepartment.Shared;
+using AutofacExample.EducationDepartment.Events;
 
 namespace AutofacExample.EducationDepartment.ViewModels
 {
@@ -28,7 +29,7 @@ namespace AutofacExample.EducationDepartment.ViewModels
 
         private StudentViewModel _studentVM;
         private CollegeViewModel _collegeVM;
-        private readonly IEventAggregator _eventAggregator;
+        private readonly IEventAggregator _eventAggregator;        
 
         #endregion
 
@@ -175,7 +176,8 @@ namespace AutofacExample.EducationDepartment.ViewModels
 
         #region Constructors
 
-        public IndividualStudentViewModel(AddStudent addStudent, StudentViewModel studentVM, CollegeViewModel collegeVM,
+        public IndividualStudentViewModel(AddStudent addStudent,
+            StudentViewModel studentVM, CollegeViewModel collegeVM,
             IEventAggregator eventAggregator)
             : base(addStudent)
         {
@@ -220,8 +222,11 @@ namespace AutofacExample.EducationDepartment.ViewModels
             student.Country = this.Country;
             student.ContactNumber = this.ContactNumber;
 
-            //Add student to list
-            this._studentVM.StudentList.Add(student);
+            ////Add student to list
+            //this._studentVM.StudentList.Add(student);
+
+            //Add student to list using Event machenism
+            this._eventAggregator.Publish(new StudentAddedEvent(student, this));
 
             //Close after saving
             (this.View as AddStudent).Close();
