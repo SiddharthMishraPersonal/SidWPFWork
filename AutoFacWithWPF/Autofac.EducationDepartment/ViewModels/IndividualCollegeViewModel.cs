@@ -5,6 +5,9 @@ using System.Text;
 using Telerik.Windows.Controls;
 using AutofacExample.EducationDepartment.EventBase;
 using AutofacExample.EducationDepartment.Views;
+using System.Windows.Input;
+using AutofacExample.EducationDepartment.Models;
+using AutofacExample.EducationDepartment.Shared;
 
 namespace AutofacExample.EducationDepartment.ViewModels
 {
@@ -127,6 +130,95 @@ namespace AutofacExample.EducationDepartment.ViewModels
         {
             this._collegeVM = collegeVM;
             this._eventAggregator = eventAggregator;
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public void OnEdit(CollegeViewModel college)
+        {
+
+        }
+
+        #endregion
+
+        #region Commands
+
+        ICommand _saveCollegeCommand;
+
+        public ICommand SaveCollegeCommand
+        {
+            get
+            {
+
+                if (_saveCollegeCommand == null)
+                    this._saveCollegeCommand = new RelayCommands(param => this.SaveCollegeCommand_Execute(param),
+                        param => this.SaveCollegeCommand_CanExecute(param));
+
+                return _saveCollegeCommand;
+            }
+        }
+
+        bool SaveCollegeCommand_CanExecute(object param)
+        {
+            if (string.IsNullOrEmpty(this.Name))
+                return false;
+
+            return true;
+        }
+
+        void SaveCollegeCommand_Execute(object param)
+        {
+            CollegeModel college = new CollegeModel(this.Name);
+            college.Address = this.Address;
+            college.City = this.City;
+            college.State = this.State;
+            college.Country = this.Country;
+            college.ContactNumber = this.ContactNumber;
+
+            //Add college to list
+            this._collegeVM.CollegeList.Add(college);
+
+            //Close after saving
+            (this.View as AddCollege).Close();
+        }
+
+        ICommand _clearFieldsCommand;
+
+        public ICommand ClearFieldsCommand
+        {
+            get
+            {
+                if (_clearFieldsCommand == null)
+                    _clearFieldsCommand = new RelayCommands(param => this.ClearFieldsCommand_Execute(param),
+                        param => this.ClearFieldsCommand_CanExecute(param));
+
+                    return _clearFieldsCommand;
+            }
+        }
+
+        bool ClearFieldsCommand_CanExecute(object param)
+        {
+            if (string.IsNullOrEmpty(this.Name) &&
+                string.IsNullOrEmpty(this.Address) &&
+                string.IsNullOrEmpty(this.City) &&
+                string.IsNullOrEmpty(this.State) &&
+                string.IsNullOrEmpty(this.Country) &&
+                string.IsNullOrEmpty(this.ContactNumber))
+                return false;
+
+            return true;
+        }
+
+        void ClearFieldsCommand_Execute(object param)
+        {
+            this.Name = string.Empty;
+            this.Address = string.Empty;
+            this.City = string.Empty;
+            this.State = string.Empty;
+            this.Country = string.Empty;
+            this.ContactNumber = string.Empty;
         }
 
         #endregion

@@ -6,6 +6,7 @@
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
         <telerik:RadGridView x:Name="rgvStudentList" 
+                             MinHeight="500"
                              telerik:StyleManager.Theme="Office_Blue"
                              HorizontalAlignment="Stretch" 
                              VerticalAlignment="Top" 
@@ -25,7 +26,7 @@
 											DataMemberBinding="{Binding Name}" />
                 <telerik:GridViewDataColumn Header="College"
                                             
-											DataMemberBinding="{Binding College}" />
+											DataMemberBinding="{Binding College.Name}" />
                 <telerik:GridViewDataColumn Header="Subject"
                                             
 											DataMemberBinding="{Binding Subject}" />
@@ -108,7 +109,7 @@
 										   FontWeight="Bold"
 										   Grid.Row="1"
 										   Grid.Column="0" />
-                                <TextBlock Text="{Binding College}"
+                                <TextBlock Text="{Binding College.Name}"
 										    Margin="5,0,0,0"
 										   Foreground="Black"
 										   Grid.Row="1"

@@ -11,7 +11,6 @@ namespace AutofacExample.EducationDepartment.Models
         #region Private Variables
 
         private string _name;
-        private string _collegeID;
         private string _studentID;
         private string _subject;
         private string _address;
@@ -19,7 +18,7 @@ namespace AutofacExample.EducationDepartment.Models
         private string _state;
         private string _country;
         private string _contactNumber;
-        private string _college;
+        private CollegeModel _college;
 
         #endregion
 
@@ -116,7 +115,7 @@ namespace AutofacExample.EducationDepartment.Models
             }
         }
 
-        public string College
+        public CollegeModel College
         {
             get { return _college; }
             set
@@ -125,19 +124,6 @@ namespace AutofacExample.EducationDepartment.Models
                 {
                     _college = value;
                     OnPropertyChanged(() => this.College);
-                }
-            }
-        }
-
-        public string CollegeID
-        {
-            get { return _collegeID; }
-            set
-            {
-                if (value != _collegeID)
-                {
-                    _collegeID = value;
-                    OnPropertyChanged(() => CollegeID);
                 }
             }
         }
@@ -159,10 +145,12 @@ namespace AutofacExample.EducationDepartment.Models
 
         #region Constructors
 
-        public StudentModel(string collegeID)
+        public StudentModel(CollegeModel college, string name, string subject)
         {
-            this.CollegeID = Guid.NewGuid().ToString();
-            this.CollegeID = collegeID;
+            this.StudentID = Guid.NewGuid().ToString();
+            this.College = college;
+            this.Name = name;
+            this.Subject = subject;
         }
 
         #endregion

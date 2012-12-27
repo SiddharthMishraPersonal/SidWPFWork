@@ -6,6 +6,7 @@
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
         <telerik:RadGridView x:Name="rgvCollegeList" 
+                             MinHeight="500"
                               telerik:StyleManager.Theme="Office_Blue"
                              HorizontalAlignment="Stretch" 
                              VerticalAlignment="Top" 

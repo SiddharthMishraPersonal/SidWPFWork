@@ -6,12 +6,12 @@
         WindowStartupLocation="CenterOwner"
         WindowStyle="ToolWindow" 
         ResizeMode="NoResize"        
-        MaxWidth="200"
-        MaxHeight="335">
+        Width="200"
+        Height="335">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="120" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -49,15 +49,13 @@
                Name="lbCollege" 
                VerticalAlignment="Stretch" />
 
-        <TextBox Height="23" 
-                 HorizontalAlignment="Left" 
-                 Name="txtCollege" 
-                 VerticalAlignment="Stretch" 
-                 
-                 Grid.Column="1" 
-                 Grid.Row="1" 
-                 Text="{Binding City, Mode=TwoWay}"
-                 />
+        <TextBlock HorizontalAlignment="Left" 
+                   Name="txtCollege" 
+                   VerticalAlignment="Stretch" 
+                   Grid.Column="1" 
+                   Grid.Row="1" 
+                   TextWrapping="WrapWithOverflow"
+                   Text="{Binding CollegeName}"/>
 
         <Label Content="Subject" 
                Height="28" 
@@ -74,7 +72,7 @@
                  
                  Grid.Column="1" 
                  Grid.Row="2" 
-                 Text="{Binding State, Mode=TwoWay}"/>
+                 Text="{Binding Subject, Mode=TwoWay}"/>
 
         <Label Content="Address" 
                Height="28" 
@@ -165,23 +163,22 @@
                  Text="{Binding ContactNumber, Mode=TwoWay}"/>
         <Grid Grid.Row="8"
               Grid.Column="1">
-            <telerik:RadButton Content="Save" 
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                <telerik:RadButton Content="Save" 
                                Grid.Column="1" 
                                Grid.Row="0" 
                                Height="23" 
-                               Command="{Binding CreateStudentCommand}"
+                               Command="{Binding SaveStudentCommand}"
                                HorizontalAlignment="Right"
                                Name="radButton1" 
-                               VerticalAlignment="Top" >
-                <!--<telerik:RadButton.Style>
-                    <Style TargetType="telerik:RadButton">
-                        <Setter Property="IsEnabled" Value="False"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Name}" Value=""
-                        </Style.Triggers>
-                    </Style>
-                </telerik:RadButton.Style>-->
-            </telerik:RadButton>
+                               VerticalAlignment="Top" ></telerik:RadButton>
+                <telerik:RadButton Content="Clear"
+                                   Command="{Binding ClearFieldsCommand}"
+                                   Height="23" 
+                                   HorizontalAlignment="Right"
+                                   Name="radBtnClear" 
+                                   VerticalAlignment="Top"></telerik:RadButton>
+            </StackPanel>
         </Grid>
 
     </Grid>

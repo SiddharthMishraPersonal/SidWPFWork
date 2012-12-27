@@ -117,9 +117,10 @@ namespace AutofacExample.EducationDepartment.Models
 
         #region Constructors
 
-        public CollegeModel()
+        public CollegeModel(string name)
         {
             this.CollegeID = Guid.NewGuid().ToString();
+            this.Name = name;
         }
 
         #endregion

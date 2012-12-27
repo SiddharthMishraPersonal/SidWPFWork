@@ -128,23 +128,48 @@
                  Text="{Binding ContactNumber, Mode=TwoWay}"/>
         <Grid Grid.Row="6"
               Grid.Column="1">
-            <telerik:RadButton Content="Save" 
-                               Grid.Column="1" 
-                               Grid.Row="0" 
-                               Command="{Binding CreateCollegeCommand}"
-                               Height="23" 
-                               HorizontalAlignment="Right"
-                               Name="radButton1" 
-                               VerticalAlignment="Top" >
-                <!--<telerik:RadButton.Style>
-                    <Style TargetType="telerik:RadButton">
-                        <Setter Property="IsEnabled" Value="False"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Name}" Value=""
-                        </Style.Triggers>
-                    </Style>
-                </telerik:RadButton.Style>-->
-            </telerik:RadButton>
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                <telerik:RadButton Content="Save"
+                                   Command="{Binding SaveCollegeCommand}"
+                                   Height="23" 
+                                   HorizontalAlignment="Right"
+                                   Name="radBtnSave" 
+                                   VerticalAlignment="Top" >                    
+                </telerik:RadButton>
+                <telerik:RadButton Content="Clear"
+                                   Command="{Binding ClearFieldsCommand}"
+                                   Height="23" 
+                                   HorizontalAlignment="Right"
+                                   Name="radBtnClear" 
+                                   VerticalAlignment="Top">
+                    <!--<telerik:RadButton.Style>
+                        <Style TargetType="{x:Type telerik:RadButton}">
+                            <Setter Property="Content" Value="Clear"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Name}" Value="{x:Null}">
+                                    <Setter Property="Content" Value="Cancel"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Address}" Value="{x:Null}">
+                                    <Setter Property="Content" Value="Cancel"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding City}" Value="{x:Null}">
+                                    <Setter Property="Content" Value="Cancel"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding State}" Value="{x:Null}">
+                                    <Setter Property="Content" Value="Cancel"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Country}" Value="{x:Null}">
+                                    <Setter Property="Content" Value="Cancel"/>
+                                </DataTrigger>
+                                
+                                <DataTrigger Binding="{Binding ContactNumber}" Value="{x:Null}">
+                                    <Setter Property="Content" Value="Cancel"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </telerik:RadButton.Style>-->
+                </telerik:RadButton>
+            </StackPanel>
         </Grid>
 
     </Grid>

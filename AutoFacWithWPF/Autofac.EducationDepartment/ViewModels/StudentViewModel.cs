@@ -26,7 +26,7 @@ namespace AutofacExample.EducationDepartment.ViewModels
             get
             {
                 _studentListPerCollege.Clear();
-                var ss = _studentList.Where(s => s.CollegeID == this.SelectedCollegeID).ToList();
+                var ss = _studentList.Where(s => s.College.CollegeID == this.SelectedCollegeID).ToList();
                 if (ss == null)
                 {
                     return null;
@@ -82,6 +82,13 @@ namespace AutofacExample.EducationDepartment.ViewModels
 
                     this.StudentList.Add(e.Student);
                 });
+
+            this.StudentList.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(StudentList_CollectionChanged);
+        }
+
+        void StudentList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged(() => this.StudentListPerCollege);
         }
     }
 }
