@@ -1,0 +1,65 @@
+﻿<Window x:Class="TelerikWpfAppForGrid.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        Title="MainWindow"
+        Width="783"
+        Height="350">
+    <Grid Width="783">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <ComboBox x:Name="ExportFormatComboBox"
+                      Grid.Row="0"
+                      Grid.Column="0"
+                      Width="50"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Top"
+                      ItemsSource="{Binding ExportFormatTypes}"
+                      SelectedItem="{Binding ExportFormatType,
+                                             Mode=TwoWay}" />
+            <Button x:Name="ExportButton"
+                    Command="{Binding ExportCommand}"
+                    CommandParameter="{Binding ElementName=StudentGridView}"
+                    Content="Export" />
+        </StackPanel>
+
+        <telerik:RadGridView x:Name="StudentGridView"
+                             Grid.Row="1"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="3"
+                             Margin="5,5,0,0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             AutoGenerateColumns="False"
+                             ElementExporting="StudentGridView_ElementExporting"
+                             ItemsSource="{Binding StudentCollection}">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn Width="Auto"
+                                            DataMemberBinding="{Binding FirstName}"
+                                            Header="First Name" />
+                <telerik:GridViewDataColumn Width="Auto"
+                                            DataMemberBinding="{Binding MiddleName}"
+                                            Header="Middle Name" />
+                <telerik:GridViewDataColumn Width="Auto"
+                                            DataMemberBinding="{Binding LastName}"
+                                            Header="Last Name" />
+                <telerik:GridViewDataColumn Width="Auto"
+                                            DataMemberBinding="{Binding Grade}"
+                                            Header="Grade" />
+                <telerik:GridViewDataColumn Width="*"
+                                            DataMemberBinding="{Binding College}"
+                                            Header="College" />
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+
+    </Grid>
+</Window>
