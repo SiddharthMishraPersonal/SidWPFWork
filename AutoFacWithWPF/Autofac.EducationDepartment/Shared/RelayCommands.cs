@@ -79,7 +79,7 @@ namespace AutofacExample.EducationDepartment.Shared
         /// <summary>
         /// Execute method.
         /// </summary>
-        /// <param name="parameter">Method paramenter.</param>
+        /// <param name="parameter">Method parameter.</param>
         public void Execute(object parameter)
         {
             _execute(parameter);
@@ -88,11 +88,11 @@ namespace AutofacExample.EducationDepartment.Shared
         /// <summary>
         /// CanExecute method.
         /// </summary>
-        /// <param name="parameter">Method paramenter.</param>
+        /// <param name="parameter">Method parameter.</param>
         /// <returns>Return true if can execute.</returns>
         public bool CanExecute(object parameter)
         {
-            return _canExecute == null ? true : _canExecute(parameter);
+            return _canExecute == null || _canExecute(parameter);
         }
 
         /// <summary>
